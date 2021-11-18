@@ -10,6 +10,6 @@ class Ball(Turtle):
         self.penup()
 
     def move(self):
-        new_x_position = self.xcor() + 1
-        new_y_position = self.ycor() + .75
+        new_x_position = self.xcor() + 10
+        new_y_position = self.ycor() + 7.5
         self.goto(x=new_x_position, y=new_y_position)
