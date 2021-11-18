@@ -3,6 +3,7 @@ from right_paddle import RightPaddle
 from left_paddle import LeftPaddle
 from ball import Ball
 from score import Score
+import score
 import time
 
 screen = Screen()
@@ -14,8 +15,7 @@ screen.setup(width=800, height=600)
 left_paddle = LeftPaddle()
 right_paddle = RightPaddle()
 
-left_score = Score()
-right_score = Score()
+score = Score()
 
 ball = Ball()
 
@@ -46,15 +46,12 @@ while game_is_on:
 
     # detect the left paddle missing the ball - right paddle gains point
     elif ball.xcor() < -380:
-        right_score.score += 1
-        print(right_score.score)
+        score.add_to_right_score()
         ball.reset_position()
 
     # detect the right paddle missing the ball - left paddle gains point
     elif ball.xcor() > 380:
-        left_score.score += 1
-        print(left_score.score)
+        score.add_to_left_score()
         ball.reset_position()
-
 
 screen.exitonclick()
