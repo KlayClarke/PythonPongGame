@@ -48,13 +48,13 @@ while game_is_on:
     elif ball.xcor() < -380:
         right_score.score += 1
         print(right_score.score)
-        ball.home()
+        ball.reset_position()
 
     # detect the right paddle missing the ball - left paddle gains point
     elif ball.xcor() > 380:
         left_score.score += 1
         print(left_score.score)
-        ball.home()
+        ball.reset_position()
 
 
 screen.exitonclick()
