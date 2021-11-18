@@ -14,6 +14,7 @@ class Score(Turtle):
         self.update_score()
 
     def update_score(self):
+        self.clear()
         self.goto(x=-100, y=200)
         self.write(self.l_score, align='center', font=font)
         self.goto(x=100, y=200)
@@ -21,10 +22,8 @@ class Score(Turtle):
 
     def add_to_left_score(self):
         self.l_score += 1
-        self.clear()
         self.update_score()
 
     def add_to_right_score(self):
         self.r_score += 1
-        self.clear()
         self.update_score()
