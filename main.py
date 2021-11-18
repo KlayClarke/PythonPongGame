@@ -3,7 +3,6 @@ from right_paddle import RightPaddle
 from left_paddle import LeftPaddle
 from ball import Ball
 from score import Score
-import score
 import time
 
 screen = Screen()
@@ -28,7 +27,7 @@ screen.onkey(right_paddle.go_down, 'Down')
 game_is_on = True
 
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
