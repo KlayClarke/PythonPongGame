@@ -1,6 +1,6 @@
 from turtle import Screen
-from computer_paddle import ComputerPaddle
-from user_paddle import UserPaddle
+from right_paddle import RightPaddle
+from left_paddle import LeftPaddle
 from ball import Ball
 import time
 
@@ -10,16 +10,17 @@ screen.title('Pong')
 screen.bgcolor('black')
 screen.setup(width=800, height=600)
 
-cpu_paddle = ComputerPaddle()
-user_paddle = UserPaddle()
+left_paddle = LeftPaddle()
+right_paddle = RightPaddle()
+
 
 ball = Ball()
 
 screen.listen()
-screen.onkey(user_paddle.go_up, 'w')
-screen.onkey(user_paddle.go_down, 's')
-screen.onkey(cpu_paddle.go_up, 'Up')
-screen.onkey(cpu_paddle.go_down, 'Down')
+screen.onkey(left_paddle.go_up, 'w')
+screen.onkey(left_paddle.go_down, 's')
+screen.onkey(right_paddle.go_up, 'Up')
+screen.onkey(right_paddle.go_down, 'Down')
 
 game_is_on = True
 
@@ -33,11 +34,11 @@ while game_is_on:
         ball.bounce_y()
 
     # detect collision with left paddle
-    elif ball.xcor() > -340 and ball.distance(user_paddle) < 40:
+    elif ball.xcor() > -340 and ball.distance(left_paddle) < 40:
         ball.bounce_x()
 
     # detect collision with right paddle
-    elif ball.xcor() > 340 and ball.distance(cpu_paddle) < 40:
+    elif ball.xcor() > 340 and ball.distance(right_paddle) < 40:
         ball.bounce_x()
 
 
