@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from computer_paddle import ComputerPaddle
 from user_paddle import UserPaddle
 from ball import Ball
@@ -21,12 +21,19 @@ screen.onkey(user_paddle.go_down, 's')
 screen.onkey(cpu_paddle.go_up, 'Up')
 screen.onkey(cpu_paddle.go_down, 'Down')
 
-
 game_is_on = True
 
 while game_is_on:
     time.sleep(0.1)
     screen.update()
     ball.move()
+
+    # detect collision with wall
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
+
+    # detect collision with paddles
+    elif ball.ycor() == user_paddle.ycor() or ball.ycor() == cpu_paddle.ycor():
+        ball.bounce()
 
 screen.exitonclick()
